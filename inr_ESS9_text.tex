@@ -1,0 +1,221 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[UKenglish]{babel}
+\usepackage[babel]{csquotes}
+
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx, subcaption, booktabs}
+
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[all]{hypcap}
+
+\usepackage[style=authoryear, backend=biber, natbib]{biblatex}
+\bibliography{~/Zotero/Bibliothek.bib}
+
+\usepackage{setspace}
+\doublespacing
+
+
+%opening
+\title{How to reduce Item Nonresponse in Face-to-Face Surveys? A Review and Evidence from the European Social Survey}
+\author{Malte Grönemann \\ University of Mannheim, Mannheim, Germany}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+I review the literature on item nonresponse in surveys and based on this review, I extend the satisficing model with respondents' privacy concerns to incorporate all relevant aspects of the response process for item nonresponse. I review proposed strategies to reduce item nonresponse and test selected strategies. Results suggest that boosting respondents' use of showcards, shorter interview durations and conducting the interview in the respondents' primary language might be promising ways to reduce item nonresponse. Other people present during the interview only has a small association with the number of refusals. Matching age and gender of respondents and interviewers appears not to be a worthwile strategy.
+\end{abstract}
+
+Keywords: item nonresponse, survey design, survey error, face-to-face surveys, fixed-effects negative binomial regression
+
+\section{Introduction}
+
+Missing data pose a problem to the analysis of survey data. They decrease the effective sample size and can introduce bias to estimates if the causes for missingness are related to the item or respondent characteristics \citep{deleeuwPreventionTreatmentItem2003}. Although missing data are relatively rare in most single items, they can add up to a considerable loss of observations in multivariate analyses. Due to these harmful effects of missing data, one objective of survey researchers is to keep their prevalence as low as possible. Therefore, it is important to understand the processes that can lead to missing data.
+
+I focus on the respondent as a source of missing data by answering with ``Don't know'' (DK) or refusing to answer. (\textit{item nonresponse}). Item nonresponse can also be seen as an indicator of overall data quality since it can be the result of \textit{satisficing} \citep{krosnickResponseStrategiesCoping1991}. Satisficing means that the respondent is giving a satisfactory answer instead of the best one possible.
+
+I review the existing literature on item nonresponse and extend the satisficing model based on this review to include privacy concerns resulting in an encompassing model of item nonresponse: the probability of item nonresponse depends on the task difficulty of the item(s) divided by the product of ability and motivation of the respondent or the respondents' privacy concerns. This means that higher difficulty results in more item nonresponse, higher ability and motivation in less item nonresponse. Difficulty, ability and motivation are separate from privacy concerns, e.g. due to item sensitivity or general mistrust. Privacy concerns are relevant when deciding whether to disclose an already formed answer and does not influence the cognitive burden of retrieving the answer.
+
+In the empirical part of the paper, I explore a few practical ideas to reduce item nonresponse. Promoting the use of showcards, shorter interviews and tranlating questionnaires might be promising strategies. All of those reduce the cognitive burden of respondents. The effects are not causal though because I am not able to sufficiently control for respondent ability. Matching respondents' and interviewers' gender and age seem not to be efficient tools to reduce item nonresponse. They could have influenced item nonresponse if respondents are more willing to share private information with interviewers that are similar to them.
+
+This introduction follows a short theoretical discussion presenting a model for the probability of item nonresponse based on satisficing. Structured by this model, I review the literature on strategies how to reduce item nonresponse and test a selection using the \textit{European Social Survey}. The rest of the paper is devoted to this test of strategies, describing data and methods and presenting results. Finally, I summarise and discuss my review and results.
+
+
+\section{A Model of Item Nonresponse}
+
+The \textit{survey response process} \citep{tourangeauPsychologySurveyResponse2000} involves multiple steps on behalf of the respondent. They need to comprehend the question, retrieve information from memory, eventually they need to judge these information, map them onto the response options and perhaps edit the response due to sensitivity or social desirability. Respondents can take these steps in order or jump back and forth, e.g. if they need to form an opinion on the spot. But in all of these steps, item nonresponse can be introduced \citep{deleeuwPreventionTreatmentItem2003}.
+
+The two types of item nonresponse might be related to different steps of the survey response process. Refusals are more likely to stem from the editing step when respondents do not want to answer although they could. They might feel an item is too sensitive or do not trust the interviewer with this information. DK is more likely to come about when the respondent cannot answer in the first place. Either the respondent cannot answer because they do not know about the content of the question or are unable to remember an event \citep{beattyAnswerNotAnwer2002, turnerCanResponseLatencies2015}. Or they do not perceive it worth the effort to come up with an answer and satisfice \citep{krosnickResponseStrategiesCoping1991}. But \citet{shoemakerItemNonresponseDistinguishing2002} have shown that higher mental effort is related to more refusals as well. And conversely, it is plausible that DK is used as a more polite way to refuse. I, therefore, do not distinguish between them in the following sections even though they often show different strengths of predictors \citep{silberEffectsQuestionRespondent2021}.
+
+Ability has been the explanation for the differences often found in item nonresponse by education, age, physical and mental health \citep{colsherDataQualityAge1989, pickeryImpactRespondentInterviewer1998, deleeuwPreventionTreatmentItem2003, messerDeterminantsItemNonresponse2012, silberEffectsQuestionRespondent2021}. Women and ethnic minority members are often found to have more item nonresponse \citep{kupekDeterminantsItemNonresponse1998, pickeryImpactRespondentInterviewer1998}. For the latter, on average lower literacy and lower command of the majority language are hypothesised to cause more item nonresponse \citep{kupekDeterminantsItemNonresponse1998}. \citet{meitingerPowerCultureItem2020} conclude that item nonresponse reflects broader social inequalities in abilities and access to information. The ability hypothesis is also directly supported by correlations between item nonresponse and measures of intelligence \citep{hedengrenDogThatDidn2012}.
+
+More difficult or unclear questions typically have higher levels of item nonresponse \citep{holbrookImpactQuestionRespondent2006, messerDeterminantsItemNonresponse2012, holbrookInterviewerErrorsHelp2016, olsonEffectsRespondentQuestion2019}. Since demographic questions can often be recalled very simply by respondents, they often show less item nonresponse than attitudinal and behavioural questions where the answers often do not exist before before getting asked the question \citep{olsonEffectsRespondentQuestion2019, silberEffectsQuestionRespondent2021}.
+
+Even when able to perform the task at hand, respondents not necessarily want to.
+They need to perceive the effort as worth it. Differences in \textit{motivation} are an explanation
+for less item nonresponse of respondents that are more interested in the topic of the survey \citep{kochItemNonresponseEuropean2009, silberEffectsQuestionRespondent2021}. Item nonresponse is related to measures of conscientiousness as well \citep{hedengrenDogThatDidn2012}.
+
+Motivation can also affect the editing process. For example, respondents (and interviewers) might deliberately not answer screening and filtering questions to reduce survey burden \citep{tourangeauMotivatedMisreportingShaping2015}.
+When editing an answer, concerns of privacy\footnote{I use this label to subsume general concerns about privacy towards the survey (e.g. about data processing, anonymity) and not wanting to answer single sensitive questions.} come into play. Am I going to be judged by the interviewer when answering honestly? Are my data really secure and confidential? This is a particular problem for questions perceived as more intrusive \citep{tourangeauSensitiveQuestionsSurveys2007}. Most prominently, this affects questions on income \citep{yanTrendsIncomeNonresponse2010} and sexual behaviour \citep{kupekDeterminantsItemNonresponse1998}, which often show particularly high levels of item nonresponse. High item nonresponse is often used as an indicator for question sensitivity \citep{tourangeauSensitiveQuestionsSurveys2007}. Reluctancy and overall skepticism towards surveys and science, privacy concerns and generalised mistrust are traits that result in more nonresponse \citep{silberEffectsQuestionRespondent2021}.
+
+\bigskip
+
+I have thus identified four constructs related to the probability of item nonresponse under which most research can be subsumed: cognitive ability, task difficulty, motivation and privacy concerns. However, as \citet{krosnickResponseStrategiesCoping1991} already hypothesised, these concepts are interrelated in their effect on item nonresponse. Very easy questions can be answered by less able respondents and very hard questions might even cause the most able to struggle. The resulting fraction of difficulty by ability represents the relative mental effort to answer a question. To what point the relative mental effort is worth it depends on the respondents' motivation. A highly motivated respondent even answeres the difficult questions. The probability of nonresponse decreases with motivation. \citet[225]{krosnickResponseStrategiesCoping1991} has summarised these relations into a formula of the probability of satisficing. Satisficing refers to respondents lowering their standards in answering a question and only giving a satisfactory instead of an optimal answer to cut down on cognitive effort. Item nonresponse is such a satisficing strategy. There are situations where DKs are genuine though \citep{turnerCanResponseLatencies2015}. This is nonetheless a product of the respondents' ability and thereby included in the formula.
+
+Additionally, higher privacy concerns lead to more item nonresponse. Since this relates to another step in the survey response process, namely editing rather than comprehension, retrieval or judging, I postulate it to be independent from the other concepts. I therefore suggest extending the formula by Krosnick as follows:
+
+$$ P_{INR} \ = \ max \left( \frac{difficulty}{ability \ * \ motivation} \ , \ privacy \right) $$
+
+\textit{The probability of a nonsubstantive answer by the respondent is given by the task difficulty
+divided by the product of ability and motivation or the respondents' privacy concerns, whichever
+is higher.}
+
+This formula specifically addresses item nonresponse for a single item but its meaning is adaptable to every level of a survey.
+
+
+\section{How to reduce Item Nonresponse}
+
+Based on these four concepts, one can theorise how to decrease item nonresponse. Some of the following possibilities may seem obvious and are established standards not only because of their potential relationship to item nonresponse but to ensure quality of substantial answers as well. Others might reduce item nonresponse but they could have negative consequences for other parts of \textit{total survey error}, the combined effect of all error sources in a survey \citep{grovesTotalSurveyError2010}. They require a trade-off before implementation.
+
+I have structured this review of approaches to reduce item nonresponse by the respective concepts they target.
+
+\subsection{Task Difficulty}
+
+Task difficulty is predominantly influenced by design choices regarding single questions and their type of expected response. For the design of questions, much typical advice from question design aims to reduce task difficulty: asking short questions with simple structures, avoiding ambiguity and fuzzy concepts and not asking respondents to do multiple things at once. For a more comprehensive review on advice on question and questionnaire design, see for example \citet{smythDesigningQuestionsQuestionnaires2016}. But the type of question is also associated with task difficulty: open-ended questions, being allowed to select multiple options, more response categories and being asked to order categories are associated with higher item nonresponse \citep{schumanOpenClosedQuestion1979, holbrookImpactQuestionRespondent2006, holbrookInterviewerErrorsHelp2016, olsonEffectsRespondentQuestion2019, silberEffectsQuestionRespondent2021}. Additional measures to decrease difficulty can be visual helpers like images or showcards. With showcards, respondents do not need to remember all response categories while thinking about the question. But there is not much empirical work on the effect of showcards on item nonresponse. \citet{holbrookInterviewerErrorsHelp2016} found that questions using showcards had more item nonresponse although this is likely because they are only used with more difficult questions. In the context of the ESS, showcards do not seem to affect the distribution of substantive responses in experiments \citep{jackleAssessingEffectData2010} but item nonresponse was not investigated.
+
+The question level is very well understood and constitutes the largest part of the variance in item nonresponse. This highlights the importance of the single question for overall data quality \citep{olsonEffectsRespondentQuestion2019}.
+
+But not only single questions but the whole questionnaire needs to be designed as simply
+as possible. Questionnaires with changes in response categories, routing and filtering are associated with higher nonresponse \citep{messerDeterminantsItemNonresponse2012}. Grouping questions by topic could reduce mental effort and therefore item nonresponse but it also increases the likelihood of non-differentiation between the items \citep{krosnickResponseStrategiesCoping1991}. Offering DK and refusal explicitly increases their use because respondents are more aware of the “easy way out” \citep{schumanAssessmentNoOpinion1979, beattyAnswerNotAnwer2002}.
+
+Task difficulty can be reduced for language minorities by providing the questionnaire in more languages. However, this is expensive and can reduce comparability of cases. For a review on comparability in cross-cultural surveys, see e.g. \citet{behrTranslationMeasurementInstruments2016}.
+
+\subsection{Ability}
+
+To make sure that the respondent is able to answer the questions, interviews should be conducted in situations where understanding and concentration is as good as possible. Other people present during the interview, for example, could be a source of distraction. Empirical investigations have not been conclusive though \citep{kupekDeterminantsItemNonresponse1998, tuSocialDistanceRespondent2007, silberEffectsQuestionRespondent2021}. With longer interviews, respondents might get tired \citep{holbrookInterviewerErrorsHelp2016, olsonEffectsRespondentQuestion2019}.
+
+\subsection{Motivation}
+
+Motivation could decrease over the course of the interview as well. Different page layouts and progress bars might help with that in web surveys but evidence is mixed \citep{peytchevWebSurveyDesign2006, yanShouldStayShould2011, sarrafSurveyPageLength2014}. The
+literature on cooperation enhancement, e.g. using incentives, has focussed on unit nonresponse. Some of these ideas might be applicable to increase respondent motivation within the interview as well. After all, unit and item nonresponse are linked: respondents that initially refused to participate have higher levels of item nonresponse \citep{yanRelationUnitNonresponse2010, frickerExaminingRelationshipNonresponse2010}.
+
+\subsection{Privacy Concerns}
+
+To tackle reluctancy to answer due to privacy concerns, survey researchers need to make sure that the respondents' data are secure and anonymous and communicate that. Explaining why the data are collected, how they are processed and what is done to protect their privacy is also ethically advisable and often legally required.
+
+In face-to-face surveys, establishing trust depends on the respondent-interviewer dynamics. Based on the hypothesis that respondents might perceive interviewers similar to themselves as more trustworthy, scholars have assessed the impact of matching their characteristics. \citet{vercruyssenEffectSociodemographicMis2017} find less item nonresponse when matching age
+of interviewers and respondents and matching gender reduces item nonresponse for males and increases it for females. Matching education has no effect \citep{vercruyssenEffectSociodemographicMis2017, silberEffectsQuestionRespondent2021}. \citet{tuSocialDistanceRespondent2007} on the other hand find age and education matching are potent predictors of item nonresponse.
+
+\section{Strategies to be Tested}
+
+In this review, I have stressed the role of the respondent and how design choices can increase the probability of a substantial answer. But in face-to-face surveys, the interviewer can be a source of item nonresponse as well. This is left for further research. I proceed with testing a few proposed strategies for item nonresponse reduction based on this review.
+
+Over time, respondents might lose the ability to concentrate and motivation. I therefore expect more item nonresponse, the longer the interview takes. If this is true, making questionnaires only as long as necessary is a strategy to reduce item nonresponse and maintain high data quality. However, the duration of the interview might also be dependent on the respondents' ability. Overall ability of the respondent needs to be controlled for in the model.
+
+Interferences and other people being present during the interview are expected to increase item nonresponse because they can be a source of distraction and respondents might not want to answer some questions in front of people they know. If true, interviews should be conducted without others present if possible.
+
+Showcards are intended to make the process of answering less burdensome because respondents do not need to remember the response options. If this has an effect on item nonresponse, showcards should be provided and their use promoted to ensure a high data quality. In this operationalisation, the interviewer assesses afterwards to what extent the respondent used the showcards. Respondent ability might influence how well they understand the procedures, ability needs to be controlled for again. The interviewer assessment is likely influenced by the overall impression the interviewer has from the interview and is therefore endogenous. The overall impression of the interviewer needs to be controlled for as well.
+
+Language difficulties are likely to inhibit the response process. For respondents that primarily speak a different language at home than the interview is conducted in, the task might be more difficult. To ensure data quality from these respondents, translating the questionnaire is an option (although costly and comes with problems of comparability). Respondents for whom this is true are likely migrant groups that have lower levels of education than the native population. Therefore, ability needs to be controlled for.
+
+Previous research suggests that respondents might be more willing to answer to socially similar interviewers. I test this proposition for gender and age. If true and the sampling frame contains some demographic information, survey agencies could assign interviewers based on these demographics. Whether the gender of respondent and interviewer matches can be seen as random while the probability of the respondent being older or younger than the interviewer is dependent on the respondents' age, which is correlated with ability. Therefore, respondent age needs to be controlled for \footnote{Interviewer age is accounted for in the fixed effects.}.
+
+Table \ref{table_strat} summarises the strategies to be tested. Necessary controls are respondents' ability and specifically age and the interviewers' overall assessment of the interview. Based on the theory outlined above, I do not see that inclusion of any of these control variables or the other strategies are likely to distort the effect of another variable of interest. Therefore, I am going to test all effects in a single model.
+
+\begin{table}[h]
+\caption{Reduction Strategies to be Tested}
+\centering
+\begin{tabular}{| l l l |}
+\hline
+Strategy & Mechanism & Expectation \\
+\hline
+Duration of the Interview & Ability, Motivation & positive \\
+Interference of the Interview & Ability, Privacy & positive \\
+Use of Showcards & Difficulty & negative \\
+Interview not primary Language & Difficulty & positive \\
+Gender Matching & Privacy & negative \\
+Interviewer more than 10 years older & Privacy & positive \\
+Respondent more than 10 years older & Privacy & positive \\
+\hline
+\end{tabular}
+\label{table_strat}
+\end{table}
+
+
+\section{Data and Methods}
+
+\subsection{Data}
+
+Following this review and synthesis, I want to test the effectiveness of some potential strategies to reduce item nonresponse. I use the \textit{European Social Survey (ESS)} Round 9 collected in 2018 \citep{essericEuropeanSocialSurvey2019}. The ESS is a biannual face-to-face survey on attitudes and beliefs towards social and political topics in Europe. The data release 3.1 includes data from 49,519 respondents from 29 countries.
+
+\subsection{Dependent Variables}
+
+The three dependent variables are the sum of DK, the sum of refusals and the total sum of item nonresponse for every respondent. Item nonresponse is counted only in variables that are presented to all respondents, i.e. that are not affected by filtering questions. DK and refusal are not presented as response options in the ESS but are explicitly recorded as such. Interviewers are instructed to accept them without probe.
+
+\subsection{Independent Variables}
+
+The independent variables of interest are discussed in the previous section.
+
+To control for ability and the interviewers' assessment of the interview, I include education (operationalised by the ISCED scale), age and squared age of the respondent as well as the interviewers' assessment of how well the respondent understood the questions, to what extent the respondent answered to the best of their ability and how often they asked for clarifications.
+
+More information on all variables including summary statistics can be found in the \href{https://doi.org/10.17605/OSF.IO/M83GY
+}{supplemental material}.
+
+\subsection{Model}
+
+I analyse the data using a negative binomial regression with interviewer fixed effects \citep{allisonFixedEffectsNegativeBinomial2002}\footnote{Count data models with fixed effects are quite debated \citep{wooldridgeDistributionfreeEstimationNonlinear1999, allisonFixedEffectsNegativeBinomial2002, cameronRegressionAnalysisCount2013}. For a justification of model choice, see the supplementary material.}. Standard errors are clustered by interviewer. Since the population of interest in this case are interviews and not societies, no weighting is applied. Missing data are deleted listwise.
+
+The analyses are carried out in \textit{R} \citep{rcoreteamLanguageEnvironmentStatistical2021} using the \textit{Tidyverse} \citep{wickhamWelcomeTidyverse2019} for data handling and graphics and the \textit{fixest} package \citep{bergeEfficientEstimationMaximum2018} to estimate the regressions. The code is available  in the \href{https://doi.org/10.17605/OSF.IO/M83GY
+}{supplemental material} as well.
+
+\section{Results}
+
+Figure \ref{fig_model} shows the incidence rate ratios (exponentiated coefficients) of the tested strategies. The exact coefficients of the tested strategies and of the control variables as well as standard errors and coefficients of model fit can be found in the table in the appendix.
+
+\begin{figure}
+\centering
+\caption{Coefficients of the tested Strategies}
+\includegraphics[width=\linewidth]{results_inr_ess9_figure.pdf}
+\label{fig_model}
+\end{figure}
+
+The most promising ways to reduce item nonresponse seem to be boosting the use of showcards, shorter interviews and tranlating questionnaires.
+
+With more showcard use as indicated by the interviewer (respondent used no showcards vs. used some showcards vs. used all showcards), the amount of DK reduces by about a quarter and the amount of refusal by about 18\% on average. With every additional thirty minutes interview duration, the number of DKs rises by about 21\% and the number of refusals rises by about 8\% on average. And compared to interviews conducted in the language the respondent primarily speaks at home, interviews conducted in a language different from the respondents' primary language at home show on average 42\% more DKs and 26\% more refusals.
+
+As a general observation for all variables, the effects on the total number of item nonresponse closely mirror the effect on DK. This is not surprising since there are many more DKs than refusals. The effects on the number of refusals is typically weaker than the effect on DK but still present. This supports the idea that refusals and DKs are not perfectly separate in their meaning but not identical as well. For the variables presented so far, stronger effects on DK make substantial sense as well since they are all based on respondents' ability or difficulty of the task.
+
+Matching respondents' gender has a small positive effect on the number of DKs. This is contrary to expectations, which suggested that matching socio-demographics of interviewers and respondents leads to a more trusting interview situation and reduces item nonresponse. The effect on refusals is not significant but should be pronounced since this strategy is partly based on the privacy mechanism. Matching by age has no significant effect. Matching respondents and interviewers therefore seems not to be a promising strategy to reduce item nonresponse.
+
+Other people present during the interview raises the amount of refusals by 14\% in line with the reasoning that respondents do not want to answer some questions in presence of others they know. The effect on DK is not significant. Other people present might therefore influence item nonresponse more via privacy than distraction. However, due to the relatively small number of refusals, the effect on the total item nonresponse is not significant.
+
+
+\section{Discussion}
+
+I have reviewed the literature on item nonresponse and extended the cognitive \textit{satisficing} model \citep{krosnickResponseStrategiesCoping1991} with concerns about privacy to encompass all aspects that can interfere with the response process in survey interviews. Based on this new model, I have reviewed possibilities to reduce item nonresponse in face-to-face surveys.
+
+In an empirical analysis using data from the \textit{European Social Survey Round 9}, I found that boosting the respondents' use of showcards, shortening interview durations and conducting the interview in the respondents' primary language might be promising ways to reduce item nonresponse in face-to-face surveys. These strategies reduce the cognitive effort on behalf of respondents. Other people present during the interview is moderately associated with more refusals as well. Respondents are probably not willing to disclose private information in front of people they know. However, my hypothesis that respondents might trust interviewers more and share more private information if interviewer and respondent are socially similar has received no support: matching socio-demographic characteristics of interviewers and respondents seems not to be a worthwile strategy.
+
+I want to stress though that I do not claim causal effects. Although I carefully selected control variables, I cannot rule out violations of the \textit{conditional independence assumption} which is necessary to identify causal effects with regression analysis. Most variables are influenced by respondents' ability (e.g. to understand survey procedures) as is item nonresponse. Respondents' ability is notoriously hard to measure in surveys and proxies like education and age that I have used as controls are not perfect.
+
+A second threat to the results is the endogeneity of some variables of interest, in particular showcard use and others present during the interviews. They are measured in the interviewer questionnaire after the interview and are likely biased by the interviewers' overall assessment of the interview, including the amount of item nonresponse. I tried to control for that using other variables from the interviewer questionnaire but again, I cannot verify the conditional independence assumption to be true.
+
+In summary, this review and analysis can only serve as a \textit{current best guess} in how to think about item nonresponse and its reduction. Future research might be able to overcome some of the shortcomings of this and other previous studies.
+
+\section*{Acknowledgements}
+
+I want to thank Achim Koch, Johanna Mehltretter and especially Tobias Gummer for helpful comments in multiple stages of this project. I want to thank Marcel Kappes and Thomas Gautschi for methodological discussions.
+
+This work was supported by the University of Mannheim’s Graduate School of Economic and Social Sciences.
+
+\singlespacing
+\printbibliography
+
+\newpage
+
+\include{results_inr_ess9_table}
+
+\end{document}
