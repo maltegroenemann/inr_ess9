@@ -1,15 +1,18 @@
 
 /.Rproj.user
+/.kile
+/.idea
+/.git
 
 *.dta
 *.Rproj
+.RData
+.Rhistory
+
+.gitignore
 
 *.nav
 *.snm
 *.aux
 
-Fundamentals_FSS21*
 
-Guidelines_Term_Paper.pdf
-Syllabus_FSS2021_Research_Methods_Fundamentals_of_Survey_Design.pdf
-TermPaperFoSD_MalteGroenemann_1675501.pdf
